@@ -3,7 +3,7 @@ import Shop from "./components/Shop";
 
 function App() {
   return (
-    <div>
+    <div className="bg-teal-50 min-h-screen">
       <Header />
       <Shop />
     </div>
