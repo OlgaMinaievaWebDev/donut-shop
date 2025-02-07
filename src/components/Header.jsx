@@ -8,7 +8,9 @@ function Header() {
       <h1 className="font-bold text-2xl uppercase flex-1 text-center text-rose-700">
         Crispy Rings
       </h1>
-      <Button>Cart</Button>
+      <Button className="bg-rose-500 text-white font-bold py-2 px-4 rounded-md hover:bg-rose-600 transition">
+        Cart
+      </Button>
     </header>
   );
 }

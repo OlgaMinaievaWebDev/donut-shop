@@ -7,52 +7,51 @@ import donutD from "./src/assets/donut-6.avif";
 
 export const DUMMY_PRODUCTS = [
   {
-    id: "p1",
+    id: "d1",
     image: donutO,
-    title: "Majestic Vintage Mocha Overcoat",
-    price: 129.99,
+    title: "Classic Glazed Delight",
+    price: 2.99,
     description:
-      "Channel timeless sophistication with this stunning mocha overcoat. Crafted for the discerning gentleman who appreciates the fine blend of vintage charm and modern elegance.",
+      "A timeless favorite, our Classic Glazed Donut is the perfect balance of sweetness and fluff. Enjoy the melt-in-your-mouth experience with every bite!",
   },
   {
-    id: "p2",
+    id: "d2",
     image: donutG,
-    title: "Enchanting Blush Dream Gown",
-    price: 189.99,
+    title: "Chocolate Paradise",
+    price: 3.49,
     description:
-      "Bask in the glow of elegance with our Enchanting Blush Dream Gown. Embody the regality of a queen with a sweet touch of pink that whispers enchantment. This is the perfect piece for those seeking to create unforgettable moments.",
+      "Indulge in the rich and creamy flavors of our Chocolate Paradise Donut. Topped with luscious chocolate glaze and sprinkles, it’s a chocoholic’s dream come true.",
   },
-
   {
-    id: "p3",
+    id: "d3",
     image: donutQ,
-    title: "Vintage Sunshine Rain Jacket",
-    price: 49.99,
+    title: "Berry Bliss",
+    price: 3.99,
     description:
-      "Brace the showers in style! Our Vintage Sunshine Rain Jacket ensures that you stand out, even in the dullest weather. Because rain is never a reason to compromise on your fashion quotient.",
+      "Bursting with fruity goodness, our Berry Bliss Donut features a tangy strawberry glaze and a dusting of powdered sugar. Perfect for a refreshing twist!",
   },
   {
-    id: "p4",
+    id: "d4",
     image: donutU,
-    title: "Classic Merlot Business Suit",
-    price: 249.99,
+    title: "Caramel Crunch",
+    price: 3.79,
     description:
-      "Step into the boardroom with unmatched confidence in our Classic Merlot Business Suit. Exuding an air of refined class and understated power, it is ideal for the modern executive who values tradition and elegance.",
+      "For lovers of caramel, this donut is heaven in a bite. Topped with caramel glaze and crispy toffee bits, it’s a delightful treat for any occasion.",
   },
   {
-    id: "p5",
+    id: "d5",
     image: donutP,
-    title: "Ethereal Moonlight Evening Dress",
-    price: 159.99,
+    title: "Lemon Zest Dream",
+    price: 3.59,
     description:
-      "Sweep the room off its feet in our Ethereal Moonlight Evening Dress. Crafted to mimic the allure of the moonlight, this dress is a nod to those who appreciate subtle glamour and a standout silhouette.",
+      "Bright and zesty, our Lemon Zest Dream Donut combines the tang of lemon with a sweet glaze for a refreshing burst of flavor.",
   },
   {
-    id: "p6",
+    id: "d6",
     image: donutD,
-    title: "Pioneer Rugged Denim Jacket",
-    price: 79.99,
+    title: "Maple Bacon Bliss",
+    price: 4.49,
     description:
-      "Our Pioneer Rugged Denim Jacket is a tribute to those who embody the spirit of adventure. Designed with durability and comfort in mind, this jacket is a wardrobe essential for the urban explorer.",
+      "The perfect blend of sweet and savory, our Maple Bacon Bliss Donut features a maple glaze topped with crispy bacon bits. A unique flavor you’ll fall in love with.",
   },
 ];
