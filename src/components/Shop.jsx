@@ -1,5 +1,7 @@
 import donut from "../assets/main.avif";
 import Button from "./Button";
+import Product from "./Product";
+import { DUMMY_PRODUCTS } from "/dummy-products.jsx";
 
 function Shop() {
   return (
@@ -18,6 +20,11 @@ function Shop() {
         </div>
       </div>
       {/* Product List */}
+      {DUMMY_PRODUCTS.map((product) => (
+        <li key={product.id}>
+          <Product {...product} />
+        </li>
+      ))}
     </main>
   );
 }
