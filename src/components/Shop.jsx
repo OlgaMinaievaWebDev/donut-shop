@@ -2,7 +2,7 @@ import donut from "../assets/main.avif";
 import Product from "./Product";
 import { DUMMY_PRODUCTS } from "/dummy-products";
 
-function Shop() {
+function Shop({ onAddItemToCart }) {
   return (
     <main className="flex flex-col items-center space-y-5 px-4 md:px-10">
       <div className="w-full h-[30vh] overflow-hidden relative">
@@ -22,7 +22,7 @@ function Shop() {
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id} className="list-none">
-            <Product {...product} />
+            <Product {...product} onAddItemToCart={onAddItemToCart} />
           </li>
         ))}
       </ul>
