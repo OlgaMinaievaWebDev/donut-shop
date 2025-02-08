@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import { DUMMY_PRODUCTS } from "/dummy-products"; // Fix the import path
 
 export const CartContext = createContext({
@@ -8,8 +8,9 @@ export const CartContext = createContext({
 });
 
 function shoppingCartReducer(state, action) {
+  const updatedItems = [...state.items];
+
   if (action.type === "ADD_ITEM") {
-    const updatedItems = [...state.items];
     const existingCartItemIndex = updatedItems.findIndex(
       (cartItem) => cartItem.id === action.payload
     );
@@ -32,33 +33,32 @@ function shoppingCartReducer(state, action) {
         quantity: 1,
       });
     }
-    if (action.type === "UPDATE_ITEM_QUANTITY") {
-      const updatedItemIndex = updatedItems.findIndex(
-        (item) => item.id === action.payload.productId
-      );
-
-      if (updatedItemIndex !== -1) {
-        const updatedItem = {
-          ...updatedItems[updatedItemIndex],
-          quantity:
-            updatedItems[updatedItemIndex].quantity + action.payload.amount,
-        };
-
-        if (updatedItem.quantity <= 0) {
-          updatedItems.splice(updatedItemIndex, 1); // Remove item if quantity is 0 or less
-        } else {
-          updatedItems[updatedItemIndex] = updatedItem;
-        }
-      }
-    }
-
-    return {
-      ...state,
-      items: updatedItems,
-    };
   }
 
-  return state;
+  if (action.type === "UPDATE_ITEM_QUANTITY") {
+    const updatedItemIndex = updatedItems.findIndex(
+      (item) => item.id === action.payload.productId
+    );
+
+    if (updatedItemIndex !== -1) {
+      const updatedItem = {
+        ...updatedItems[updatedItemIndex],
+        quantity:
+          updatedItems[updatedItemIndex].quantity + action.payload.amount,
+      };
+
+      if (updatedItem.quantity <= 0) {
+        updatedItems.splice(updatedItemIndex, 1); // Remove item if quantity is 0 or less
+      } else {
+        updatedItems[updatedItemIndex] = updatedItem;
+      }
+    }
+  }
+
+  return {
+    ...state,
+    items: updatedItems,
+  };
 }
 
 export default function CartContextProvider({ children }) {
@@ -68,8 +68,7 @@ export default function CartContextProvider({ children }) {
   );
 
   function handleAddItemToCart(id) {
-    shoppingCartDispatch;
-    ({ type: "ADD_ITEM", payload: id });
+    shoppingCartDispatch({ type: "ADD_ITEM", payload: id });
   }
 
   function handleUpdateCartItemQuantity(productId, amount) {
