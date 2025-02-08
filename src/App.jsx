@@ -70,8 +70,13 @@ function App() {
     }
   }
 
+  const ctxValue = {
+    items: shoppingCart.items,
+    addItemToCart: handleAddItemToCart,
+  };
+
   return (
-    <CartContext.Provider>
+    <CartContext.Provider value={ctxValue}>
       <div className="bg-gradient-to-b from-teal-50 to-white min-h-screen">
         <Header cartItems={shoppingCart.items} onOpenCart={handleOpenCart} />
         <Shop onAddItemToCart={handleAddItemToCart} />
