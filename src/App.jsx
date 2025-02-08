@@ -73,17 +73,16 @@ function App() {
   const ctxValue = {
     items: shoppingCart.items,
     addItemToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
   };
 
   return (
     <CartContext.Provider value={ctxValue}>
       <div className="bg-gradient-to-b from-teal-50 to-white min-h-screen">
-        <Header cartItems={shoppingCart.items} onOpenCart={handleOpenCart} />
+        <Header />
         <Shop onAddItemToCart={handleAddItemToCart} />
         <CartModal
           ref={modalRef}
-          cartItems={shoppingCart.items}
-          onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
           title="Your Shopping Cart"
           actions={
             <button type="button" onClick={() => modalRef.current.close()}>

@@ -22,7 +22,7 @@ function Shop({ onAddItemToCart }) {
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id} className="list-none">
-            <Product {...product} onAddItemToCart={onAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </ul>

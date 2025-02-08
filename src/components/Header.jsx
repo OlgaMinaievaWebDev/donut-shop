@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import logo from "../assets/logo.jpg";
+import { CartContext } from "../store/shopping-cart-context";
 
-function Header({ cartItems, onOpenCart }) {
+function Header() {
+  const { items } = useContext(CartContext);
+
   return (
     <header className="flex flex-wrap justify-between items-center pt-5 px-4 md:px-10 space-y-3 md:space-y-0">
       <img src={logo} alt="donut-shop logo" className="w-[80px]" />
@@ -11,7 +15,7 @@ function Header({ cartItems, onOpenCart }) {
         onClick={onOpenCart}
         className="bg-rose-500 text-white font-bold py-2 px-4 rounded-md hover:bg-rose-600 transition"
       >
-        Cart ({cartItems.length})
+        Cart ({items.length})
       </button>
     </header>
   );

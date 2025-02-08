@@ -1,18 +1,17 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef, useContext } from "react";
 import ReactDOM from "react-dom";
-
-const CartModal = forwardRef(function CartModal(
-  { cartItems, title, onUpdateCartItemQuantity },
-  ref
-) {
+import { CartContext } from "../store/shopping-cart-context";
+const CartModal = forwardRef(function CartModal({ title }, ref) {
   const dialogRef = useRef();
+
+  const { items, updateItemQuantity } = useContext(CartContext);
 
   useImperativeHandle(ref, () => ({
     open: () => dialogRef.current?.showModal(),
     close: () => dialogRef.current?.close(),
   }));
 
-  const totalPrice = cartItems.reduce(
+  const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
@@ -25,11 +24,11 @@ const CartModal = forwardRef(function CartModal(
       <h2 className="text-2xl font-bold mb-4 text-rose-700">{title}</h2>
 
       {/* Cart Items */}
-      {cartItems.length === 0 ? (
+      {items.length === 0 ? (
         <p className="text-gray-600">Your cart is empty.</p>
       ) : (
         <div className="space-y-4">
-          {cartItems.map((item) => (
+          {items.map((item) => (
             <div
               key={item.id}
               className="flex justify-between items-center border-b pb-2"
@@ -42,14 +41,14 @@ const CartModal = forwardRef(function CartModal(
               </div>
               <div className="flex items-center space-x-2">
                 <button
-                  onClick={() => onUpdateCartItemQuantity(item.id, -1)}
+                  onClick={() => updateItemQuantity(item.id, -1)}
                   className="px-3 py-1 bg-rose-100 text-rose-700 rounded-md hover:bg-rose-200"
                 >
                   -
                 </button>
                 <span className="text-gray-800">{item.quantity}</span>
                 <button
-                  onClick={() => onUpdateCartItemQuantity(item.id, 1)}
+                  onClick={() => updateItemQuantity(item.id, 1)}
                   className="px-3 py-1 bg-rose-100 text-rose-700 rounded-md hover:bg-rose-200"
                 >
                   +
@@ -61,7 +60,7 @@ const CartModal = forwardRef(function CartModal(
       )}
 
       {/* Total Price */}
-      {cartItems.length > 0 && (
+      {items.length > 0 && (
         <div className="mt-6 pt-4 border-t">
           <p className="text-lg font-semibold text-gray-800">
             Total:{" "}
@@ -78,7 +77,7 @@ const CartModal = forwardRef(function CartModal(
         >
           Close
         </button>
-        {cartItems.length > 0 && (
+        {items.length > 0 && (
           <button
             onClick={() => dialogRef.current.close()} // Close the modal on checkout
             className="px-4 py-2 bg-rose-500 text-white rounded-md hover:bg-rose-600"
