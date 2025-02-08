@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import CartModal from "./components/CartModal";
 import Shop from "./components/Shop";
 import { DUMMY_PRODUCTS } from "/dummy-products";
+import { CartContext } from "./store/shopping-cart-context";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
@@ -70,21 +71,23 @@ function App() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-teal-50 to-white min-h-screen">
-      <Header cartItems={shoppingCart.items} onOpenCart={handleOpenCart} />
-      <Shop onAddItemToCart={handleAddItemToCart} />
-      <CartModal
-        ref={modalRef}
-        cartItems={shoppingCart.items}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-        title="Your Shopping Cart"
-        actions={
-          <button type="button" onClick={() => modalRef.current.close()}>
-            Close
-          </button>
-        }
-      />
-    </div>
+    <CartContext.Provider>
+      <div className="bg-gradient-to-b from-teal-50 to-white min-h-screen">
+        <Header cartItems={shoppingCart.items} onOpenCart={handleOpenCart} />
+        <Shop onAddItemToCart={handleAddItemToCart} />
+        <CartModal
+          ref={modalRef}
+          cartItems={shoppingCart.items}
+          onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+          title="Your Shopping Cart"
+          actions={
+            <button type="button" onClick={() => modalRef.current.close()}>
+              Close
+            </button>
+          }
+        />
+      </div>
+    </CartContext.Provider>
   );
 }
 
