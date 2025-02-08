@@ -1,14 +1,15 @@
 import { forwardRef, useImperativeHandle, useRef, useContext } from "react";
 import ReactDOM from "react-dom";
 import { CartContext } from "../store/shopping-cart-context";
+
 const CartModal = forwardRef(function CartModal({ title }, ref) {
-  const dialogRef = useRef();
-
   const { items, updateItemQuantity } = useContext(CartContext);
+  const dialogRef = useRef(); // Local ref for the <dialog> element
 
+  // Expose the open and close methods to the parent component
   useImperativeHandle(ref, () => ({
-    open: () => dialogRef.current?.showModal(),
-    close: () => dialogRef.current?.close(),
+    open: () => dialogRef.current.showModal(), // Open the modal
+    close: () => dialogRef.current.close(), // Close the modal
   }));
 
   const totalPrice = items.reduce(
@@ -18,7 +19,7 @@ const CartModal = forwardRef(function CartModal({ title }, ref) {
 
   return ReactDOM.createPortal(
     <dialog
-      ref={dialogRef}
+      ref={dialogRef} // Use the local ref here
       className="rounded-lg p-6 bg-white shadow-lg w-11/12 max-w-2xl backdrop:bg-gray-800 backdrop:opacity-50 m-auto"
     >
       <h2 className="text-2xl font-bold mb-4 text-rose-700">{title}</h2>
@@ -79,11 +80,7 @@ const CartModal = forwardRef(function CartModal({ title }, ref) {
         </button>
         {items.length > 0 && (
           <button
-            onClick={() => {
-              // Add checkout logic here (e.g., redirect to a checkout page)
-              console.log("Proceeding to checkout...");
-              dialogRef.current.close();
-            }}
+            onClick={() => dialogRef.current.close()}
             className="px-4 py-2 bg-rose-500 text-white rounded-md hover:bg-rose-600"
           >
             Checkout
