@@ -2,7 +2,7 @@ import { useContext } from "react";
 import logo from "../assets/logo.jpg";
 import { CartContext } from "../store/shopping-cart-context";
 
-function Header() {
+function Header({ onOpenCart }) {
   const { items } = useContext(CartContext);
 
   return (

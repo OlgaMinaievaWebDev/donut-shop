@@ -79,7 +79,7 @@ function App() {
   return (
     <CartContext.Provider value={ctxValue}>
       <div className="bg-gradient-to-b from-teal-50 to-white min-h-screen">
-        <Header />
+        <Header onOpenCart={handleOpenCart} />
         <Shop onAddItemToCart={handleAddItemToCart} />
         <CartModal
           ref={modalRef}

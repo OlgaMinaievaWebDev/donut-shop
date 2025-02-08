@@ -2,7 +2,7 @@ import donut from "../assets/main.avif";
 import Product from "./Product";
 import { DUMMY_PRODUCTS } from "/dummy-products";
 
-function Shop({ onAddItemToCart }) {
+function Shop() {
   return (
     <main className="flex flex-col items-center space-y-5 px-4 md:px-10">
       <div className="w-full h-[30vh] overflow-hidden relative">

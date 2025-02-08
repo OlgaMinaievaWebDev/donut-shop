@@ -79,7 +79,11 @@ const CartModal = forwardRef(function CartModal({ title }, ref) {
         </button>
         {items.length > 0 && (
           <button
-            onClick={() => dialogRef.current.close()} // Close the modal on checkout
+            onClick={() => {
+              // Add checkout logic here (e.g., redirect to a checkout page)
+              console.log("Proceeding to checkout...");
+              dialogRef.current.close();
+            }}
             className="px-4 py-2 bg-rose-500 text-white rounded-md hover:bg-rose-600"
           >
             Checkout
